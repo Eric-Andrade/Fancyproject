@@ -110,6 +110,19 @@
                 <input matInput [(ngModel)]="userFilter.productName" autocomplete="off">
                 <mat-placeholder><i style="text-align:center; margin: 0 auto">Search product  </i><mat-icon svgIcon="search"></mat-icon></mat-placeholder>
             </mat-form-field>
+            <!-- <div class="item-container" id="fpd" *ngIf="products">
+                <div class="item fpd-product" *ngFor="let product of products | filterBy: userFilter | paginate: { itemsPerPage: 12, currentPage: p }">
+                    <mat-card class="card">
+                        <mat-card-header>
+                            <mat-card-title>{{product.productName}}</mat-card-title>
+                        </mat-card-header>
+                            <img mat-card-image class="card-container-product-image" src="{{product.imageBlankProduct}}" alt="{{product.productName}}´s image">
+                    </mat-card>
+                </div>
+                <div class="pagination-controls-bar">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div> -->
             <div id="fpd">
                 <div class="fpd-product" title="TITLE" data-thumbnail="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg">
                     <img src="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg" alt="image" data-parameters='{"x": 100, "y": 200, "colors": "#D5D5D5", "price": 20}' />

@@ -1336,9 +1336,9 @@ var FancyProductDesignerOptions = function() {
 		* @property langJSON
 		* @for Options.defaults
 		* @type {String | Object | Boolean}
-		* @default 'lang/default.json'
+		* @default 'assets/lang/default.json'
 		*/
-		langJSON: 'lang/default.json',
+		langJSON: 'assets/lang/default.json',
 		/**
 		* The color palette when the color wheel is displayed.
 		*
