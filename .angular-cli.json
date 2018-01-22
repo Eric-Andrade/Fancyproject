@@ -19,9 +19,18 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "printmelon",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "theme.scss",
+        "../node_modules/normalize.css/normalize.css",
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/tether/dist/js/tether.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/hammerjs/hammer.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -56,7 +65,7 @@
   "defaults": {
     "styleExt": "scss",
     "component": {
-      "inlineStyle": true,
-      "inlineTemplate": true}
+      "inlineStyle": false,
+      "inlineTemplate": false}
   }
 }

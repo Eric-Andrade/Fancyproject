@@ -1,0 +1,21 @@
+<div class="welcome">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Welcome to</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h1>PrintMelon</h1>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <div *ngIf="!tokenAuth">
+        <mat-card-content>
+            <mat-card-actions>
+              <!-- <a mat-raised-button color="primary" [routerLink]="['login']" [queryParams]="{shop:0}" >LOGIN</a> -->
+              <button mat-raised-button color="primary" (click)= "goLogin()">LOGIN</button>
+            </mat-card-actions>
+          </mat-card-content>
+    </div>
+  </mat-card>
+</div>

@@ -1,1 +1,153 @@
 /* You can add global styles to this file, and also import other style files */
+::-webkit-scrollbar-thumb:vertical{height:8.5px;background-color:#b3b3b3 !important;}
+::-webkit-scrollbar-thumb:horizontal{height:8.5px;background-color:#b3b3b3 !important;}
+/*cambia de tamaño*/
+::-webkit-scrollbar{width:8.5px;height:8.5px;background-color:transparent;cursor: pointer}
+
+::selection {
+    background: rgba(131, 45, 106, 0.51);
+    color: #af4c92;
+}
+
+::-moz-selection {
+    background: rgba(131, 45, 106, 0.51);
+    color: #af4c92;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%,
+}
+
+body{
+    background-color: #fefefe !important;
+    font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
+}
+
+a {
+    color:#636363 !important
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+a:visited {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+a:active {
+    text-decoration: none !important;
+}
+
+.card {
+    width: 275px;
+    min-height: 130px;
+    margin: 4px;
+  }
+
+mat-card-header {
+    padding: 7px 7px 0px;
+}
+
+mat-card-content {
+    margin-bottom: 5px !important;
+}
+
+.item {
+    display: inline-block !important;
+}
+
+.item, mat-chip {
+    cursor: pointer !important;
+    width: 280px;
+    padding-right: 280px
+}
+
+.mat-card:hover {
+    // background: #f2f2f2 !important;
+    -webkit-transition: background 0.5s; /* Safari */
+    transition: background 0.5s;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.2), 0 4px 2px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+  
+.spinner > div {
+    background-color: rgb(82, 82, 82);
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+  
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+  
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+  
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+  
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+  
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+    20% { -webkit-transform: scaleY(1.0) }
+}
+  
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% { 
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }  20% { 
+      transform: scaleY(1.0);
+      -webkit-transform: scaleY(1.0);
+    }
+}
+
+.alert-info-alt { border-color: #B4E1E4;background: #81c7e1;color: #fff; }
+
+.alert-danger-alt { border-color: #B63E5A;background: #E26868;color: #fff; }
+
+.form-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }

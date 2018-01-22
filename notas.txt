@@ -1,0 +1,5 @@
+Pagination: https://www.youtube.com/watch?v=7sMu-qO5IN8
+Form validation: https://scotch.io/tutorials/angular-2-form-validation
+    https://www.concretepage.com/angular-2/angular-2-4-email-validation-example
+Password confirm: https://scotch.io/@ibrahimalsurkhi/match-password-validation-with-angular-2
+Angular CLI - Adding Third Party Libraries https://coryrylan.com/blog/angular-cli-adding-third-party-libraries

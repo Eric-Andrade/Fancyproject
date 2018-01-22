@@ -1,0 +1,85 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 980;
+}
+.companyname {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.companyimage {
+   width: 30px;
+}
+
+span {
+  font-size: 16px
+}
+
+mat-toolbar{
+  box-shadow: 0 1px 17px 0px rgba(0, 0, 0, 0.18), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  background-color: #ffffff;
+  box-shadow: -1px 1px 12px 0px rgba(0, 0, 0, 0.18), 0 1px 20px 0 transparent;
+  z-index: 900;
+}
+
+.container{
+  padding: 0;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button-toolbar {
+  margin: 5px
+}
+
+.avataruser-toolbar {
+  width: 40px;
+  border-radius: 20px
+}
+
+.avataruser-sidenav {
+  width: 100px;
+  border-radius: 50px
+}
+
+.neworder {
+  width: 95%;
+  margin: 10px auto;
+}
+
+.containersection:focus, .containersection:hover {
+  -webkit-transition-duration: .4s;
+  transition-duration: .4s;
+  cursor: pointer;
+}
+
+.section {
+  padding: 10px;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-size: 18px;
+}
+
+.section:hover{
+  color: #838383 !important;
+  -webkit-transition-duration: .35s;
+  transition-duration: .35s;
+  cursor: pointer;
+}
+
+.navbarlinks {
+  display: inline-flex;
+}

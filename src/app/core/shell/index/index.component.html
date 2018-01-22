@@ -1,0 +1,59 @@
+<div class="toolbar" *ngIf="tokenAuth">
+    <mat-toolbar class="toolbar" matTooltipPosition="above">
+    <mat-toolbar-row fxShow="true" fxHide.xs="true"> <!-- max-width 959px -->
+        <div class="button-row">
+            <div class="company">
+                <a routerLink="/">
+                    <img class="companyimage" src="assets/pmelon_logo.png" alt="pmelon_logo">
+                </a>
+            </div>
+            <button class="button-toolbar" mat-button color="primary">
+                <h2>{{companyname}}</h2>
+            </button>
+            <!-- <button class="button-toolbar" mat-raised-button color="primary" >New order</button> -->
+        </div>
+        <span class="toolbar-spacer"></span>
+        <div *ngIf="navbarlinks" class="navbarlinks">
+            <!-- <div class="containersection">
+                <a class="section" routerLink="/mylistingproducts">My Listing Products</a>
+            </div> -->
+            <div class="containersection">
+                <a class="section" routerLink="/availableproducts">Available Products</a>
+            </div>
+            <div *ngFor="let navbarlink of navbarlinks">
+                <div class="containersection">
+                    <a class="section" routerLink="/{{navbarlink}}">{{navbarlink}}</a>
+                </div>
+            </div>
+        </div>
+        <button class="button-toolbar" mat-icon-button color="primary">
+            <mat-icon svgIcon="notifications"></mat-icon>
+        </button>
+        {{username}}
+        <button class="button-toolbar" mat-icon-button [matMenuTriggerFor]="avatarmenu" color="primary">
+            <img class="avataruser-toolbar" src="https://s3.amazonaws.com/uifaces/faces/twitter/desastrozo/128.jpg" alt="avatar user">
+        </button>
+            <mat-menu #avatarmenu="matMenu" yPosition="above" [overlapTrigger]="false">
+                <button mat-menu-item>
+                    <span>My profile</span>
+                </button>
+                <button mat-menu-item>
+                    <span>Configurations</span>
+                </button>
+                <button mat-menu-item (click)="closeSession()">
+                    <span>Log out</span>
+                </button>
+            </mat-menu> 
+    </mat-toolbar-row>
+    <!-- Cellphone -->
+    <mat-toolbar-row fxShow="true" fxHide.gt-xs="true"> <!-- min-width 960px -->
+        <button class="button-toolbar" mat-icon-button>
+            <mat-icon svgIcon="more_vert"></mat-icon>
+        </button>
+        <button class="button-toolbar" mat-button color="primary" (click)="goHome()">
+            <h2 class="companyname">{{companyname}}</h2>
+        </button>
+    </mat-toolbar-row>
+
+    </mat-toolbar>
+</div>

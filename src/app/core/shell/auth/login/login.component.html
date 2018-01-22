@@ -1,0 +1,70 @@
+<mat-card class="login-overlay">
+  <div class="logo">
+    Print
+    <br>
+    <span class="smaller">Melon</span>
+  </div>
+  <mat-card class="form-container shadow">
+    <div class="icon">
+      <i class="mdi mdi-account-circle"></i>
+      <div class="header">
+        Login
+      </div>
+    </div>
+    <div class="inputs">
+
+        <div class="alert alert-success" *ngIf="status == 'success'">
+            <div class="container-fluid">
+              <div class="alert-icon">
+                <i class="material-icons">check</i>
+              </div>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">
+                  <i class="material-icons">clear</i>
+                </span>
+              </button>
+              <b>Login:</b> Completed Successfully 
+            </div>
+          </div>
+    
+          <div class="alert alert-danger" *ngIf="status == 'error'">
+            <div class="container-fluid">
+              <div class="alert-icon">
+                <i class="material-icons">error_outline</i>
+              </div>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">
+                  <i class="material-icons">clear</i>
+                </span>
+              </button>
+              <b>Error:</b> Wrong password. Try again.
+            </div>
+          </div>
+
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(formLogin.value)" [formGroup]="formLogin">
+        <mat-form-field class="form-field">
+          <input type="email" name="username" id="username" #username autocomplete="off" placeholder="Email" matInput formControlName="email" [formControl]="formLogin.controls['email']">
+            <mat-hint align="end">{{username.value?.length || 0}}/45</mat-hint>
+            <mat-error *ngIf="formLogin.controls['email'].hasError('required') && formLogin.controls['email'].touched">Please include a email</mat-error>
+        </mat-form-field>
+        <div  class="alert alert-danger-alt alert-dismissable" *ngIf="formLogin.controls['email'].hasError('pattern')">You must include a valid email.</div> 
+
+        <mat-form-field class="form-field">
+            <input [type]="hide ? 'password' : 'text'" name="password" id="password" #password autocomplete="off" placeholder="Password" matInput formControlName="password" [formControl]="formLogin.controls['password']" (paste)="false">
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+            <mat-icon matSuffix (click)="hide = !hide" svgIcon="showpass"></mat-icon>
+            <mat-error *ngIf="formLogin.controls['password'].hasError('required') && formLogin.controls['password'].touched">Please include a password.</mat-error>
+        </mat-form-field>
+          <div  class="alert alert-danger-alt alert-dismissable" *ngIf="formLogin.controls['password'].hasError('pattern')">Usually password has at least one upper case one number and one espcial character.</div>
+          <div  [ngClass]="{'alert': failLoginClass, 'alert-danger-alt': failLoginClass, 'alert-dismissable': failLoginClass}">{{failLogin}}</div>
+        <div class="link">
+          <button type="submit" mat-raised-button color="primary" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" [disabled]="!loginForm.form.valid">Login</button>
+        </div>
+    </form>
+    <span>
+        <a mat-raised-button color="accent" [routerLink]="['/signin']">Not account yet? register here</a>
+    </span>
+
+    </div>
+  </mat-card>
+</mat-card>

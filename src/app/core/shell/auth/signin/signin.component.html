@@ -1,0 +1,145 @@
+<mat-card class="login-overlay">
+  <div class="logo">
+    Print
+    <br>
+    <span class="smaller">Melon</span>
+  </div>
+  <mat-card class="form-container shadow">
+    <div class="icon">
+      <i class="mdi mdi-account-circle"></i>
+      <div class="header">
+        Sign-in
+      </div>
+    </div>
+
+    <div class="inputs">
+
+      <div class="alert alert-success" *ngIf="status == 'success'">
+        <div class="container-fluid">
+          <div class="alert-icon">
+            <i class="material-icons">check</i>
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="material-icons">clear</i>
+            </span>
+          </button>
+          <b>Registration:</b> Successfully Completed.
+        </div>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="status == 'error'">
+        <div class="container-fluid">
+          <div class="alert-icon">
+            <i class="material-icons">error_outline</i>
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="material-icons">clear</i>
+            </span>
+          </button>
+          <b>Error:</b> Registration Failed.
+        </div>
+      </div>
+      <mat-horizontal-stepper linear>
+          <mat-step label="Step 1" editable="false">
+              <!-- <form #registerForm="ngForm" (ngSubmit)="customersignUpOne()">
+
+                  <mat-form-field class="form-field">
+                    <input type="email" name="email" #email="ngModel" [(ngModel)]="signupone.email" matInput placeholder="Email" required autocomplete="off">
+                  </mat-form-field>
+          
+                  <mat-form-field class="form-field">
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="signupone.password" matInput placeholder="Password" required autocomplete="off">
+                  </mat-form-field> 
+          
+                  <div class="link">
+                    <button type="submit" mat-raised-button color="primary" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" [disabled]="!registerForm.form.valid" matStepperNext>Next</button>
+                  </div>
+          
+              </form> -->
+
+              <form #registerForm="ngForm" (ngSubmit)="customersignUpOneSubmit(formsignupone.value)" [formGroup]="formsignupone">
+                <mat-form-field class="form-field">
+                  <input type="email" name="email" id="email" #email autocomplete="off" placeholder="Email" matInput formControlName="email" [formControl]="formsignupone.controls['email']" (blur)="checkEmail()">
+                    <mat-hint align="end">{{email.value?.length || 0}}/45</mat-hint>
+                    <mat-error *ngIf="formsignupone.controls['email'].hasError('required') && formsignupone.controls['email'].touched">Please include a email.</mat-error>
+                </mat-form-field>
+                  <div  class="alert alert-danger-alt alert-dismissable" *ngIf="formsignupone.controls['email'].hasError('pattern')">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Please include a valid email.</div> 
+
+                <mat-form-field class="form-field">
+                  <input [type]="hide ? 'password' : 'text'" name="password" id="password" #password autocomplete="off" placeholder="Password" matInput formControlName="password" [formControl]="formsignupone.controls['password']" (paste)="false">
+                  <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+                  <!-- <mat-icon matSuffix (click)="hide = !hide" svgIcon="hide ? showpass : more_vert"></mat-icon> -->
+                  <mat-error *ngIf="formsignupone.controls['password'].hasError('required') && formsignupone.controls['password'].touched">Please include a password.</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="form-field">
+                  <input type="password" name="confirmPassword" id="confirmPassword" #confirmPassword autocomplete="off" placeholder="Confirm password" matInput formControlName="confirmPassword" [formControl]="formsignupone.controls['confirmPassword']" (paste)="false">
+                    <mat-error *ngIf="formsignupone.controls.confirmPassword.errors?.MatchPassword">Please make sure password matches.</mat-error>
+                </mat-form-field>
+                  <div class="alert alert-info-alt alert-dismissable" *ngIf="formsignupone.controls['password'].hasError('pattern')">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      The password must has at least 8 characters: one upper case, one number and one especial character. Ej: Qwerty1!
+                  </div>
+            </form>
+
+              <div class="link">
+                <button type="submit" mat-raised-button color="primary" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" [disabled]="!registerForm.form.valid" matStepperNext>Next</button>
+              </div>
+          </mat-step>
+          <mat-step label="Step 2" >
+            <form #registerFormtwo="ngForm" (ngSubmit)="customersignUpTwoSubmit(formsignuptwo.value)" [formGroup]="formsignuptwo">
+
+                <mat-form-field class="form-field">
+                  <input type="text" name="FirstName" id="FirstName" #FirstName matInput placeholder="First name" autocomplete="off" formControlName="FirstName" [formControl]="formsignuptwo.controls['FirstName']" minlength="3" maxlength="45">
+                    <mat-hint align="end">{{FirstName.value?.length || 0}}/45</mat-hint>
+                    <mat-error *ngIf="formsignuptwo.controls['FirstName'].hasError('required') && formsignuptwo.controls['FirstName'].touched">Please include your first name.</mat-error>
+                </mat-form-field>
+                  <div class="alert alert-danger-alt alert-dismissable" *ngIf="formsignuptwo.controls['FirstName'].hasError('pattern')">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Only letters please.</div> 
+        
+                <mat-form-field class="form-field">
+                  <input type="text" name="LastName" id="LastName" #LastName matInput placeholder="Last Name" autocomplete="off" formControlName="LastName" [formControl]="formsignuptwo.controls['LastName']" minlength="3" maxlength="45">
+                    <mat-hint align="end">{{LastName.value?.length || 0}}/45</mat-hint>
+                    <mat-error *ngIf="formsignuptwo.controls['LastName'].hasError('required') && formsignuptwo.controls['LastName'].touched">Please include your last name.</mat-error>
+                </mat-form-field>
+                  <div class="alert alert-danger-alt alert-dismissable" *ngIf="formsignuptwo.controls['LastName'].hasError('pattern')">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Only letters please.</div>
+<!-- 
+                <mat-form-field class="form-field">
+                  <input type="email" name="Email" id="Email" #Email matInput placeholder="Email" autocomplete="off" formControlName="Email" [formControl]="formsignuptwo.controls['Email']" minlength="5" maxlength="45">
+                    <mat-hint align="end">{{Email.value?.length || 0}}/45</mat-hint>
+                    <mat-error *ngIf="formsignuptwo.controls['Email'].hasError('required') && formsignuptwo.controls['Email'].touched">Please include a email.</mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="form-field">
+                  <input type="password" name="Password" id="Password" #Password matInput placeholder="Password" autocomplete="off" formControlName="Password" [formControl]="formsignuptwo.controls['Password']" minlength="8" maxlength="45">
+                    <mat-hint align="end">{{Password.value?.length || 0}}/45</mat-hint>
+                    <mat-error *ngIf="formsignuptwo.controls['Password'].hasError('required') && formsignuptwo.controls['Password'].touched">Please include a password.</mat-error>
+                </mat-form-field> -->
+        
+                <mat-form-field class="form-field">
+                  <input type="text" name="Phone" id="Phone" #Phone matInput placeholder="Phone" autocomplete="off" formControlName="Phone" [formControl]="formsignuptwo.controls['Phone']" minlength="10" maxlength="10">
+                  <mat-hint align="end">{{Phone.value?.length || 0}}/10</mat-hint>
+                    <mat-error *ngIf="formsignuptwo.controls['Phone'].hasError('required') && formsignuptwo.controls['Phone'].touched">Please include your phone number.</mat-error>
+                </mat-form-field>
+                  <div class="alert alert-danger-alt alert-dismissable" *ngIf="formsignuptwo.controls['Phone'].hasError('pattern')">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      Please include a valid phone number
+                  </div>
+        
+                <div class="link">
+                  <button type="submit" mat-raised-button color="primary" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" [disabled]="!registerFormtwo.form.valid">Sign in</button>
+                </div>
+        
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+        <span>
+            <a mat-raised-button color="accent" [routerLink]="['/login']">Login</a>
+        </span>
+    </div>
+  </mat-card>
+</mat-card>

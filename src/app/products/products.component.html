@@ -1,0 +1,156 @@
+<div class="loading" *ngIf="loading">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+          <div class="filter-container" fxShow="true" fxHide.xs="true"> <!-- max-width 959px -->
+            <p class="filter-header">Filter products
+                <mat-icon class="" svgIcon="filter"></mat-icon>
+            </p>
+            <hr class="style1">
+            <p class="filter-items-title">Categories</p>
+            <div class="filter-items" *ngIf="categories">
+                <div *ngFor="let category of categories; let c = index">
+                    <mat-checkbox (change)="onChangeCategories($event)" [value]="category.categoryId"><span class="checkbox-text">{{category.name}}</span></mat-checkbox>
+                </div>
+                <!-- <pre>{{ interestFormGroup.value | json }}</pre> -->
+            </div>
+            <p class="filter-items-title">Subcategories</p>
+            <div class="filter-items" *ngIf="subcategories">
+                <div *ngFor="let subcategory of subcategories; let s = index">
+                    <mat-checkbox (change)="onChangeSubcategories($event)" [value]="subcategory.subCategoryId"><span class="checkbox-text">{{subcategory.name}}</span></mat-checkbox>
+                </div>
+            </div>              
+            <p class="filter-items-title">Brands</p>
+            <div class="filter-items" *ngIf="brands">
+                <div *ngFor="let brand of brands; let b = index">
+                    <mat-checkbox (change)="onChangeBrands($event)" [value]="brand.brandId"><span class="checkbox-text">{{brand.name}}</span></mat-checkbox>
+                </div>
+            </div>
+            <p class="filter-items-title">Sizes</p>
+            <div class="filter-items" *ngIf="sizes">
+                <div *ngFor="let size of sizes; let s = index">
+                    <mat-checkbox (change)="onChangeSizes($event)" [value]="size.sizeId"><span class="checkbox-text">{{size.uom}}</span></mat-checkbox>
+                </div>
+            </div>
+            <p class="filter-items-title">Colors</p>
+            <div class="filter-items" *ngIf="colors">
+                <div *ngFor="let color of colors; let c = index">
+                    <mat-checkbox (change)="onChangeColors($event)" [value]="color.generalColorId"><span class="checkbox-text">{{color.name}}</span></mat-checkbox>
+                </div>
+            </div>
+          </div>
+           <!-- Cellphone -->
+          <div class="filter-container-phone" fxShow="true" fxHide.gt-xs="true"> <!-- min-width 960px -->
+            <p class="<filter-header>">Filter products
+                <button class="button-toolbar iconfilter" mat-icon-button data-toggle="modal" data-target="#filterModal">
+                    <mat-icon class="" svgIcon="filter"></mat-icon>
+                </button>   
+            </p>
+            <hr class="style1">
+            <div class="modal fade" id="filterModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="filter-modal-container">
+                            <p class="filter-items-title">Categories</p>
+                            <div *ngIf="categories">
+                                <hr class="style1">
+                                <div class="filter-items-phone" *ngFor="let category of categories; let c = index">
+                                    <mat-checkbox (change)="onChangeCategories($event)" [value]="category.categoryId"><span class="checkbox-text">{{category.name}}</span></mat-checkbox>
+                                </div>
+                            </div>
+                            <p class="filter-items-title">Subcategories</p>
+                            <div *ngIf="subcategories">
+                                <hr class="style1">
+                                <div class="filter-items-phone" *ngFor="let subcategory of subcategories; let s = index">
+                                    <mat-checkbox (change)="onChangeSubcategories($event)" [value]="subcategory.subCategoryId"><span class="checkbox-text">{{subcategory.name}}</span></mat-checkbox>
+                                </div>
+                            </div>
+                            <p class="filter-items-title">Brands</p>
+                            <div *ngIf="brands">
+                                <hr class="style1">
+                                <div class="filter-items-phone" *ngFor="let brand of brands; let b = index">
+                                    <mat-checkbox (change)="onChangeBrands($event)" [value]="brand.brandId"><span class="checkbox-text">{{brand.name}}</span></mat-checkbox>
+                                </div>
+                            </div>
+                            <p class="filter-items-title">Sizes</p>
+                            <div *ngIf="sizes">
+                                <hr class="style1">
+                                <div class="filter-items-phone" *ngFor="let size of sizes; let s = index">
+                                    <mat-checkbox (change)="onChangeSizes($event)" [value]="size.sizeId"><span class="checkbox-text">{{size.name}}</span></mat-checkbox>
+                                </div>
+                            </div>
+                            <p class="filter-items-title">Colors</p>
+                            <div *ngIf="colors">
+                                <hr class="style1">
+                                <div class="filter-items-phone" *ngFor="let color of colors; let c = index">
+                                    <mat-checkbox (change)="onChangeColors($event)" [value]="color.generalColorId"><span class="checkbox-text">{{color.name}}</span></mat-checkbox>
+                                </div>
+                            </div>
+                            <button class="filters-buttons" mat-raised-button color="primary">Apply filters</button>
+                            <button class="filters-buttons" mat-raised-button data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+          </div>
+           <!--/ Cellphone -->
+      </div>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+       <div class="products-items" fxShow="true" fxHide.xs="true"> <!-- max-width 959px -->
+            <mat-form-field class="input-full-width">
+                <input matInput [(ngModel)]="userFilter.productName" autocomplete="off">
+                <mat-placeholder><i style="text-align:center; margin: 0 auto">Search product  </i><mat-icon svgIcon="search"></mat-icon></mat-placeholder>
+            </mat-form-field>
+            <div id="fpd">
+                <div class="fpd-product" title="TITLE" data-thumbnail="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg">
+                    <img src="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg" alt="image" data-parameters='{"x": 100, "y": 200, "colors": "#D5D5D5", "price": 20}' />
+                     <span title="TITLE_FOR_TEXT" data-parameters='{"x": 150, "y": 250, "removable": true, "draggable": true, "rotatable": true, "resizable": true, "colors": "#000000,#ffffff,#990000"}' >Default Text</span>
+                </div>
+                <div class="fpd-product" title="ANOTHER_TITLE" data-thumbnail="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg">
+                    <img src="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg" alt="image" data-parameters='{"x": 100, "y": 200, "colors": "#D5D5D5", "price": 20}' />
+                     <span title="TITLE_FOR_TEXT" data-parameters='{"x": 150, "y": 250, "removable": true, "draggable": true, "rotatable": true, "resizable": true, "colors": "#000000,#ffffff,#990000"}' >Default Text</span>
+                </div>
+            </div>
+       </div>
+        <!-- Cellphone -->
+        <div class="products-items" fxShow="true" fxHide.gt-xs="true"> <!-- min-width 960px -->
+            <mat-form-field class="input-full-width-phone">
+                <input matInput [(ngModel)]="userFilter.productName" autocomplete="off">
+                <mat-placeholder><i style="text-align:center; margin: 0 auto">Search product  </i><mat-icon svgIcon="search"></mat-icon></mat-placeholder>
+            </mat-form-field>
+            <div class="item-container" id="fpd" *ngIf="products">
+                <div class="item fpd-product" *ngFor="let product of products | filterBy: userFilter | paginate: { itemsPerPage: 12, currentPage: p }">
+                    <mat-card class="card">
+                        <mat-card-header>
+                            <mat-card-title>{{product.productName}}</mat-card-title>
+                            <!-- pipe truncate | slice:0:5 -->
+                        </mat-card-header>
+                        <!-- {{product.imageBlankProduct}} -->
+                            <img mat-card-image class="card-container-product-image" src="{{product.imageBlankProduct}}" alt="{{product.productName}}´s image">
+                        <!-- <div class="card-container">
+                            <div class="inner">
+                                <mat-card-content>
+                                    {{product.productDescription | slice:0:20 }}
+                                </mat-card-content>
+                            </div>
+                        </div> -->
+                    </mat-card>
+                </div>
+                <div class="pagination-controls-bar">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+       </div>
+        <!--/ Cellphone -->
+    </div>
+  </div>
+</div>
