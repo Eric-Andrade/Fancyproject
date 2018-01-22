@@ -1138,7 +1138,7 @@ var FancyProductDesignerOptions = function() {
 		* @type {String}
 		* @default 'templates/'
 		*/
-		templatesDirectory: 'html/',
+		templatesDirectory: 'assets/html/',
 		/**
 		* To add photos from Facebook, you have to set your own Facebook API key.
 		*

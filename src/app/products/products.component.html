@@ -124,13 +124,18 @@
                 </div>
             </div> -->
             <div id="fpd">
-                <div class="fpd-product" title="TITLE" data-thumbnail="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg">
-                    <img src="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg" alt="image" data-parameters='{"x": 100, "y": 200, "colors": "#D5D5D5", "price": 20}' />
-                     <span title="TITLE_FOR_TEXT" data-parameters='{"x": 150, "y": 250, "removable": true, "draggable": true, "rotatable": true, "resizable": true, "colors": "#000000,#ffffff,#990000"}' >Default Text</span>
-                </div>
-                <div class="fpd-product" title="ANOTHER_TITLE" data-thumbnail="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg">
-                    <img src="https://api.rethumb.com/v1/square/200/https://images.rethumb.com/other/01.jpeg" alt="image" data-parameters='{"x": 100, "y": 200, "colors": "#D5D5D5", "price": 20}' />
-                     <span title="TITLE_FOR_TEXT" data-parameters='{"x": 150, "y": 250, "removable": true, "draggable": true, "rotatable": true, "resizable": true, "colors": "#000000,#ffffff,#990000"}' >Default Text</span>
+                <div class="item-container" *ngIf="products">
+                    <div class="item" *ngFor="let product of products | filterBy: userFilter | paginate: { itemsPerPage: 12, currentPage: p }">
+                        <mat-card class="card">
+                            <mat-card-header>
+                                <mat-card-title>{{product.productName}}</mat-card-title>
+                            </mat-card-header>
+                                <img mat-card-image class="card-container-product-image" src="{{product.imageBlankProduct}}" alt="{{product.productName}}´s image">
+                        </mat-card>
+                    </div>
+                    <div class="pagination-controls-bar">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
                 </div>
             </div>
        </div>
