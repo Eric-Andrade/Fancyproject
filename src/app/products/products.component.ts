@@ -70,6 +70,9 @@ export class ProductsComponent implements OnInit {
 
     ngOnInit() {
 
+        // tslint:disable-next-line:no-shadowed-variable
+        const fancyProductDesigner = new FancyProductDesigner($('#fpd'));
+
         console.log('is customer logged:', this._loginService.getUserLoggedIn());
         this.filterProducts();
         this.getBrands();
@@ -111,9 +114,6 @@ export class ProductsComponent implements OnInit {
                 if (!this.products) {
                     console.log('Error on filterProducts...');
                 }else {
-
-            // tslint:disable-next-line:no-shadowed-variable
-            const fancyProductDesigner = new FancyProductDesigner($('#fpd'));
                     console.log(this.productscount);
                     this.loading = false;
                 }

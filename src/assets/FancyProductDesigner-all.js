@@ -1138,7 +1138,7 @@ var FancyProductDesignerOptions = function() {
 		* @type {String}
 		* @default 'templates/'
 		*/
-		templatesDirectory: 'assets/html/',
+		templatesDirectory: 'assets/',
 		/**
 		* To add photos from Facebook, you have to set your own Facebook API key.
 		*
@@ -1336,9 +1336,9 @@ var FancyProductDesignerOptions = function() {
 		* @property langJSON
 		* @for Options.defaults
 		* @type {String | Object | Boolean}
-		* @default 'assets/lang/default.json'
+		* @default 'assets/default.json'
 		*/
-		langJSON: 'assets/lang/default.json',
+		langJSON: 'assets/default.json',
 		/**
 		* The color palette when the color wheel is displayed.
 		*
