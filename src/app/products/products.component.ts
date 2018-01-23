@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
@@ -57,7 +58,9 @@ export class ProductsComponent implements OnInit {
         private _subcategoriesservice: SubcategoriesService,
         iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
         private formBuilder: FormBuilder,
-        private _loginService: LoginService) {
+        private _loginService: LoginService,
+        private _route: ActivatedRoute,
+        private _router: Router) {
         iconRegistry.addSvgIcon(
         'search',
         sanitizer.bypassSecurityTrustResourceUrl('assets/search.svg'));
@@ -69,11 +72,6 @@ export class ProductsComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        // tslint:disable-next-line:no-shadowed-variable
-        const fancyProductDesigner = new FancyProductDesigner($('#fpd'));
-
-        console.log('is customer logged:', this._loginService.getUserLoggedIn());
         this.filterProducts();
         this.getBrands();
         this.getCategories();
@@ -451,5 +449,9 @@ export class ProductsComponent implements OnInit {
 
     submit() {
 
+    }
+
+    productDesigner() {
+        this._router.navigate(['productdesigner']);
     }
 }

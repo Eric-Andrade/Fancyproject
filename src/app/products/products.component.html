@@ -110,15 +110,8 @@
                 <input matInput [(ngModel)]="userFilter.productName" autocomplete="off">
                 <mat-placeholder><i style="text-align:center; margin: 0 auto">Search product  </i><mat-icon svgIcon="search"></mat-icon></mat-placeholder>
             </mat-form-field>
-            <div id="fpd">
-                <div class="fpd-product" title="TITLE" data-thumbnail="https://www.w3schools.com/howto/img_forest.jpg">
-                </div>
-                <div class="fpd-product" title="ANOTHER_TITLE" data-thumbnail="https://www.w3schools.com/howto/img_forest.jpg">
-                </div>
-              </div>
-            <!-- <div id="fpd">
                 <div class="item-container" *ngIf="products">
-                    <div class="item" *ngFor="let product of products | filterBy: userFilter | paginate: { itemsPerPage: 12, currentPage: p }">
+                    <div class="item" *ngFor="let product of products | filterBy: userFilter | paginate: { itemsPerPage: 12, currentPage: p }" (click)="productDesigner()">
                         <mat-card class="card">
                             <mat-card-header>
                                 <mat-card-title>{{product.productName}}</mat-card-title>
@@ -130,7 +123,6 @@
                         <pagination-controls (pageChange)="p = $event"></pagination-controls>
                     </div>
                 </div>
-            </div> -->
        </div>
         <!-- Cellphone -->
         <div class="products-items" fxShow="true" fxHide.gt-xs="true"> <!-- min-width 960px -->

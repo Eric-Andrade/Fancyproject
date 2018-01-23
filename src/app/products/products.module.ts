@@ -11,9 +11,11 @@ import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ProductdesignerComponent } from './productdesigner/productdesigner.component';
 
 const routes: Routes = [
-  { path: '', component: ProductsComponent }
+  { path: '', component: ProductsComponent },
+  {path: 'productdesigner', component: ProductdesignerComponent }
 ];
 
 @NgModule({
@@ -37,6 +39,6 @@ const routes: Routes = [
     NgxPaginationModule,
     InfiniteScrollModule
   ],
-  declarations: [ProductsComponent]
+  declarations: [ProductsComponent, ProductdesignerComponent]
 })
 export class ProductsModule { }
